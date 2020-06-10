@@ -24,15 +24,19 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <dependencies>
-
-    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <!--<configuration>
+                    <goal>install</goal>
+                </configuration>  -->
             </plugin>
         </plugins>
     </build>
