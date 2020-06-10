@@ -46,11 +46,11 @@
       <developerConnection>scm:git:https://github.com/Prakshal26/sfg-pet-clinic.git</developerConnection>
     <tag>sfg-pet-clinic-0.0.1</tag>
   </scm>
-    <distributionManagement>
+    <!--<distributionManagement>
         <repository>
             <id>Prakshal26</id>
             <name>sfg-pet-clinic</name>
             <url>file:///home/thara/testesb/in</url>
         </repository>
-    </distributionManagement>
+    </distributionManagement> -->
 </project>
