@@ -6,6 +6,7 @@ import guru.springframework.sfgpetclinic.services.OwnerService;
 import guru.springframework.sfgpetclinic.services.VetService;
 import guru.springframework.sfgpetclinic.services.map.OwnerServiceMap;
 import guru.springframework.sfgpetclinic.services.map.VetServiceMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -24,10 +25,28 @@ public class DataLoader implements CommandLineRunner {
     //Owner Service is the class we have made in pet-clinic-data repo.
     private final OwnerService ownerService;
     private final VetService vetService;
-    public DataLoader() {
+    /* In Video 81 we will comment this part and will make SPring to itself create the object
+    and do the intialization
+     */
+    //public DataLoader() {
 
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
+        //ownerService = new OwnerServiceMap();
+        //vetService = new VetServiceMap();
+    //}
+/*
+This is how Spring will do the initialization for us by creating the constructor and giving
+the autowired.
+In OwnerService class, VetService Class and PEt we have given
+@service to specify that yes that is the service. HEre we are giving autowired that this
+is a service and we need not to create object manyally by giving new.
+Autowired: To tell SpringBoot that Owner Service is a kind of service so just create the object of
+that service internally.
+ */
+
+    @Autowired
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     //Run method is in CommandLineRunner Interface provided to us by SpringBoot
