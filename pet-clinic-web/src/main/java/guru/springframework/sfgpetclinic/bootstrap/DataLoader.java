@@ -75,8 +75,8 @@ But for the sake of understanding we are adding data traditionally.
 
         Owner owner2 = new Owner();
         owner2.setId(2L);
-        owner1.setFirstName("Fiona");
-        owner1.setLastName("Glence");
+        owner2.setFirstName("Fiona");
+        owner2.setLastName("Glence");
 
         ownerService.save(owner2);
 
