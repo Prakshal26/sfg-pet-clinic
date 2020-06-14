@@ -13,14 +13,16 @@ Here Map and Set is inbuilt java classes which allow us to store data based on k
 
 package guru.springframework.sfgpetclinic.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import guru.springframework.sfgpetclinic.model.BaseEntity;
 
-public abstract class AbstractMapService<T, ID> {
+import java.util.*;
 
-    protected Map<ID, T> map =new HashMap<>();
+//in Video 84 modified the defination of abstract class and and Map data member.
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
+
+
+    //protected Map<ID, T> map =new HashMap<>();
+    protected  Map<Long,T> map = new HashMap<>();
 
     Set<T> findAll() {
         return new HashSet<>(map.values());
@@ -28,9 +30,21 @@ public abstract class AbstractMapService<T, ID> {
     T findById (ID id) {
         return map.get(id);
     }
-    T save(ID id,T object) {
-        map.put(id, object);
-
+    /*
+    We have modified this in video 84. Earlier we were manually passing the id and storing, But now we are getching
+    the last id already strored incrementing it by 1 in the function getNextId. And then stroing our object at that id
+    instead of fetching a new ID.
+     */
+    //Now only object we are passing we need to store, No need of ID as Hashmap if genrerating it.
+    T save(T object) {
+        if(object != null) {
+            if(object.getId() == null) {
+                object.setId(getNextId());
+            }
+            map.put(object.getId(), object);
+        } else {
+            throw new RuntimeException("Object cannot be null");
+        }
         return object;
     }
 
@@ -40,5 +54,16 @@ public abstract class AbstractMapService<T, ID> {
 
     void delete(T object) {
         map.entrySet().removeIf(entry->entry.getValue().equals(object));
+    }
+    private Long getNextId() {
+
+        Long nextId = null;
+        try {
+          nextId= Collections.max(map.keySet())+ 1;
+        } catch (NoSuchElementException e) {
+            //If first ID manually we need to assign.
+            nextId = 1L;
+        }
+        return nextId;
     }
 }

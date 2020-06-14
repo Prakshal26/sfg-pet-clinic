@@ -61,8 +61,11 @@ But for the sake of understanding we are adding data traditionally.
         the function setfirstname and last name. And in turn Person class has extended BaseEntity
         class which has the implementation of setid function.
          */
+
+        //Modified in video 84 now no need to give id manually. It will fetch already existing last id, increase it by 1
+        //and store it at that id. We have implemented this is AbstractMapService class.
         Owner owner1 = new Owner();
-        owner1.setId(1L);
+        //owner1.setId(1L);
         owner1.setFirstName("Michael");
         owner1.setLastName("weston");
 
@@ -74,21 +77,23 @@ But for the sake of understanding we are adding data traditionally.
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
-        owner2.setId(2L);
+        //owner2.setId(2L);
         owner2.setFirstName("Fiona");
-        owner2.setLastName("Glence");
+        owner2  .setLastName("Glence");
 
         ownerService.save(owner2);
 
         Vet vet1 = new Vet();
-        vet1.setId(1L);
+        //Modified in video 84 now no need to give id manually. It will fetch already existing last id, increase it by 1
+        //and store it at that id. We have implemented this is AbstractMapService class.
+        //vet1.setId(1L);
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
 
         vetService.save(vet1);
 
         Vet vet2 = new Vet();
-        vet2.setId(2L);
+        //vet2.setId(2L);
         vet2.setFirstName("Sammy");
         vet2.setLastName("Axeee");
 
