@@ -3,6 +3,10 @@ package guru.springframework.sfgpetclinic.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/*
+In main application page we have given spring application. So that Spring Application will go and look for the controller.
+It will come here as we have given it controller, likewise it will look for all the controller.
+ */
 @Controller
 public class IndexController {
 
